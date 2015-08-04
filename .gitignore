@@ -1,0 +1,10 @@
+dist/
+logs/
+.settings/
+.git/
+eclipse/
+tmp/
+lib/
+*.log
+.classpath
+.project
