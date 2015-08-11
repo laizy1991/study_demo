@@ -1,8 +1,12 @@
 package model;
 
+
 public class Dog implements Animal {
 
-    private String name;
+    private String name = "你好";
+    
+    @Deprecated
+    public String debug;
     
     private Integer age;
 
@@ -29,6 +33,10 @@ public class Dog implements Animal {
         this.age = age;
     }
 
+    public void myAge() {
+        System.out.println(age);
+    }
+    
     @Override
     public int compareTo(Animal anotherAnimal) {
         if(anotherAnimal == null) {
