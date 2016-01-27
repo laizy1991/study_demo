@@ -1,7 +1,5 @@
 package modules.laboratory;
 
-import instrument.MyTransformer;
-
 import java.lang.instrument.Instrumentation;
 
 /**
@@ -13,7 +11,7 @@ import java.lang.instrument.Instrumentation;
 public class Main {
 
     public static void premain(String args, Instrumentation inst) {
-        inst.addTransformer(new MyTransformer());
+        //inst.addTransformer(new MyTransformer());
     }
     
 }
