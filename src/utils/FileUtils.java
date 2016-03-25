@@ -18,7 +18,7 @@ public class FileUtils {
      * @param content
      * @throws IOException 
      */
-    public static void write(String relativePath, byte[] content) throws IOException {
+    public static void write(String relativePath, String content) throws IOException {
         if(StringUtils.isBlank(relativePath) || content == null) {
             return;
         }
@@ -29,8 +29,8 @@ public class FileUtils {
         if(!pFile.exists() || pFile.isFile()) {
             pFile.mkdirs();
         }
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(content);
+        FileOutputStream fos = new FileOutputStream(file, true);
+        fos.write(content.getBytes());
         fos.flush();
         fos.close();
     }

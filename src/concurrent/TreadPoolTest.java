@@ -13,12 +13,32 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class TreadPoolTest {
-	private static final int count = 100;
+	private static final int count = 10;
 	private static final Random random = new Random();
 	
 	public static void main(String[] args) {
-		useThreadPool();
-		useThread();
+		/*useThreadPool();
+		useThread();*/
+		ThreadPoolExecutor pools = new ThreadPoolExecutor(10, 10, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(count));
+		while(true) {
+			pools.execute(new Runnable() {
+				@Override
+				public void run() {
+					int tmp = random.nextInt();
+					System.out.println(tmp);
+					if(tmp>0)
+					throw new RuntimeException("测试异常");
+					
+				}
+				
+			});
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	private static void useThreadPool() {
